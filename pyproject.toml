@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "poetry-django"
+version = "0.1.0"
+description = ""
+authors = ["Chef <cheftech@patraldo.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+whitenoise = "^6.7.0"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.10.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
