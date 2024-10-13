@@ -11,7 +11,23 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import dj_database_url
 import os
+from django.urls import reverse_lazy
+from environs import Env
+
+#env = environ.FileAwareEnv(
+#        DEBUG=(bool, False)
+#)
+#environ.Env.read_env()
+#env = environ.Env(DEBUG=(bool, False))
+#environ.Env.read_env()
+env = Env()
+env.read_env() 
+
+LOGIN_URL = reverse_lazy("login")
+LOGIN_REDIRECT_URL = reverse_lazy("spa")
+LOGOUT_REDIRECT_URL = reverse_lazy("spa")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,7 +44,9 @@ SECRET_KEY = "django-insecure-uwn-2-(t=#jz4les3n=ayf4)th@$vizvv-s1-sk&g#c=dj^m=t
 DEBUG = "DJANGO_DEBUG" in os.environ and os.environ["DJANGO_DEBUG"] == "ON"
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'poetry-django.fly.dev', '0.0.0.0:8000']  # <-- Updated!
+
+CSRF_TRUSTED_ORIGINS = ['https://poetry-django.fly.dev']  # <-- Updated!
 
 
 # Application definition
@@ -40,6 +58,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'rest_framework', # <-- here
     "myapp.spa", # <-- here
 ]
 
@@ -78,11 +97,26 @@ WSGI_APPLICATION = "myapp.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+#DATABASES = {
+#    "default": {
+#        "ENGINE": "django.db.backends.sqlite3",
+#        "NAME": BASE_DIR / "db.sqlite3",
+#    }
+#}
+#DATABASES['default'] = dj_database_url.config(
+#    default='sqlite:///db.sqlite3',
+#    conn_max_age=600,
+#    conn_health_checks=True,
+#)
+#DATABASES = {
+#    'default': dj_database_url.config(
+#        default='sqlite:///db.sqlite3',
+#        conn_max_age=600,
+#        conn_health_checks=True,
+#    )
+#}
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+    "default": env.dj_db_url("DATABASE_URL", default="sqlite:///db.sqlite3"),
 }
 
 
