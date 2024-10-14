@@ -18,11 +18,11 @@ COPY . /code
 ENV SECRET_KEY "GqL9ox30cT2mhr2p5CMXcXe6fzFDmVWNKOCsXGhBIyKomEaERr"
 
 RUN python manage.py collectstatic --noinput
-#RUN chmod +x startup.sh
+RUN chmod +x startup.sh
 EXPOSE 8000
-#ENTRYPOINT ["./startup.sh"]
+ENTRYPOINT ["./startup.sh"]
 
-CMD ["gunicorn","--bind",":8000","--workers","2","myapp.wsgi"]
+#CMD ["gunicorn","--bind",":8000","--workers","2","myapp.wsgi"]
 
 RUN apt-get update && apt-get install -y \
     sqlite3 \

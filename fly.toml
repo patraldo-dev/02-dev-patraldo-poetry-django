@@ -1,4 +1,4 @@
-# fly.toml app configuration file generated for poetry-django on 2024-10-12T11:30:07-06:00
+# fly.toml app configuration file generated for poetry-django on 2024-10-14T11:36:31-06:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
@@ -7,15 +7,16 @@ app = 'poetry-django'
 primary_region = 'qro'
 console_command = '/code/manage.py shell'
 
-[mounts]
-  source = "myapp_data"
-  destination = "/data"
-
 [build]
 
 [env]
   PORT = '8000'
 
+[[mounts]]
+  source = 'myapp_data'
+  destination = '/data'
+
+ 
 [http_service]
   internal_port = 8000
   force_https = true

@@ -740,28 +740,28 @@ var app = (function () {
 			c: function create() {
 				main = element("main");
 				h1 = element("h1");
-				t0 = text("¡Hola ");
+				t0 = text("Hello ");
 				t1 = text(/*name*/ ctx[0]);
 				t2 = text("!");
 				t3 = space();
 				p = element("p");
 				t4 = text("Visit the ");
 				a = element("a");
-				a.textContent = "Django-Svelte tutorial";
-				t6 = text(" to learn how to build a Django-Svelte app.");
+				a.textContent = "Svelte tutorial";
+				t6 = text(" to learn\n\t\thow to build Svelte apps.");
 				t7 = space();
 				h3 = element("h3");
 				h3.textContent = "Data from server";
 				t9 = space();
 				t10 = text(/*apimessage*/ ctx[1]);
 				attr_dev(h1, "class", "svelte-1tky8bj");
-				add_location(h1, file, 15, 4, 315);
-				attr_dev(a, "href", "https://dev.to/besil/my-django-svelte-setup-for-fullstack-development-3an8");
-				add_location(a, file, 17, 18, 364);
-				add_location(p, file, 16, 4, 342);
-				add_location(h3, file, 20, 4, 533);
+				add_location(h1, file, 15, 1, 279);
+				attr_dev(a, "href", "https://svelte.dev/tutorial");
+				add_location(a, file, 17, 12, 319);
+				add_location(p, file, 16, 1, 303);
+				add_location(h3, file, 21, 1, 422);
 				attr_dev(main, "class", "svelte-1tky8bj");
-				add_location(main, file, 14, 0, 304);
+				add_location(main, file, 14, 0, 271);
 			},
 			l: function claim(nodes) {
 				throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");

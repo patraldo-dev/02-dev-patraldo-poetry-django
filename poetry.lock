@@ -135,6 +135,19 @@ docs = ["furo (>=2021.8.17b43,<2021.9.dev0)", "sphinx (>=3.5.0)", "sphinx-notfou
 testing = ["coverage[toml] (>=5.0a4)", "pytest (>=4.6.11)"]
 
 [[package]]
+name = "django-urls"
+version = "1.1.3"
+description = "URL decorator for django views"
+optional = false
+python-versions = ">=3.5"
+files = [
+    {file = "django_urls-1.1.3.tar.gz", hash = "sha256:45fe4791add75c50196854fce303633f7ec4bbdeb4efc706943e442f18290e1c"},
+]
+
+[package.dependencies]
+django = ">=2.0"
+
+[[package]]
 name = "djangorestframework"
 version = "3.15.2"
 description = "Web APIs for Django, made easy."
@@ -325,4 +338,4 @@ brotli = ["brotli"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "9677d1a98a2bced16f2902f87a38c7037fd3ad909f50b3ffd2c39fc5dc72f541"
+content-hash = "19ac4e06228efd4063c8ce36b15d6f416a1df227d95fdfb9dfba4338b4327373"

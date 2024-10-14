@@ -35,8 +35,7 @@ export default {
 		sourcemap: true,
 		format: 'iife',
 		name: 'app',
-		//file: 'public/build/bundle.js'
-		file: '../myapp/static/frontend/bundle.js' // <-- here
+                file: '../myapp/static/frontend/bundle.js' // <-- here
 
 	},
 	plugins: [
@@ -44,6 +43,7 @@ export default {
 			compilerOptions: {
 				// enable run-time checks when not in production
 				dev: !production && livereload('../myapp/static/frontend'), // <-- here
+
 			}
 		}),
 		// we'll extract any component CSS out into

@@ -22,10 +22,9 @@ from myapp.spa.views import SpaView  # <-- here
 from myapp.api.views import GreetingApi  # <-- here
 
 
-
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("accounts/", include("django.contrib.auth.urls")), # <-- here
+    path("accounts/", include("django.contrib.auth.urls")),
     path("api/greet", GreetingApi.as_view()),  # <-- here
     path("", SpaView.as_view(), name="spa"),  # <-- here
 
