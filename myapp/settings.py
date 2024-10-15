@@ -106,8 +106,8 @@ WSGI_APPLICATION = "myapp.wsgi.application"
 #)
 DATABASES = {
     'default': dj_database_url.config(
-        default='sqlite:///db.sqlite3', #local
-        #default='sqlite:////data/db.sqlite3', #production
+        #default='sqlite:///db.sqlite3', #local
+        default='sqlite:////data/db.sqlite3', #production
         conn_max_age=600,
         conn_health_checks=True,
     )
