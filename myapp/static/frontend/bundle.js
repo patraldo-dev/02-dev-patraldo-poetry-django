@@ -42,6 +42,23 @@ var app = (function () {
 		return a != a ? b == b : a !== b || (a && typeof a === 'object') || typeof a === 'function';
 	}
 
+	let src_url_equal_anchor;
+
+	/**
+	 * @param {string} element_src
+	 * @param {string} url
+	 * @returns {boolean}
+	 */
+	function src_url_equal(element_src, url) {
+		if (element_src === url) return true;
+		if (!src_url_equal_anchor) {
+			src_url_equal_anchor = document.createElement('a');
+		}
+		// This is actually faster than doing URL(..).href
+		src_url_equal_anchor.href = url;
+		return element_src === src_url_equal_anchor.href;
+	}
+
 	/** @returns {boolean} */
 	function is_empty(obj) {
 		return Object.keys(obj).length === 0;
@@ -732,36 +749,44 @@ var app = (function () {
 		let a;
 		let t6;
 		let t7;
+		let img;
+		let img_src_value;
+		let t8;
 		let h3;
-		let t9;
 		let t10;
+		let t11;
 
 		const block = {
 			c: function create() {
 				main = element("main");
 				h1 = element("h1");
-				t0 = text("Hello ");
+				t0 = text("¡Hola ");
 				t1 = text(/*name*/ ctx[0]);
 				t2 = text("!");
 				t3 = space();
 				p = element("p");
 				t4 = text("Visit the ");
 				a = element("a");
-				a.textContent = "Svelte tutorial";
-				t6 = text(" to learn\n\t\thow to build Svelte apps.");
+				a.textContent = "Django-Svelte setup for fullstack development";
+				t6 = text(" to learn\n\t\thow to build Django-Svelte apps.");
 				t7 = space();
+				img = element("img");
+				t8 = space();
 				h3 = element("h3");
 				h3.textContent = "Data from server";
-				t9 = space();
-				t10 = text(/*apimessage*/ ctx[1]);
-				attr_dev(h1, "class", "svelte-1tky8bj");
-				add_location(h1, file, 15, 1, 279);
-				attr_dev(a, "href", "https://svelte.dev/tutorial");
-				add_location(a, file, 17, 12, 319);
-				add_location(p, file, 16, 1, 303);
-				add_location(h3, file, 21, 1, 422);
-				attr_dev(main, "class", "svelte-1tky8bj");
-				add_location(main, file, 14, 0, 271);
+				t10 = space();
+				t11 = text(/*apimessage*/ ctx[1]);
+				attr_dev(h1, "class", "svelte-ttvhdp");
+				add_location(h1, file, 17, 1, 318);
+				attr_dev(a, "href", "https://dev.to/besil/my-django-svelte-setup-for-fullstack-development-3an8");
+				add_location(a, file, 19, 12, 358);
+				add_location(p, file, 18, 1, 342);
+				if (!src_url_equal(img.src, img_src_value = "/static/frontend/images/background.png")) attr_dev(img, "src", img_src_value);
+				attr_dev(img, "alt", "Background image");
+				add_location(img, file, 22, 0, 543);
+				add_location(h3, file, 27, 1, 622);
+				attr_dev(main, "class", "svelte-ttvhdp");
+				add_location(main, file, 16, 0, 310);
 			},
 			l: function claim(nodes) {
 				throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -778,13 +803,15 @@ var app = (function () {
 				append_dev(p, a);
 				append_dev(p, t6);
 				append_dev(main, t7);
+				append_dev(main, img);
+				append_dev(main, t8);
 				append_dev(main, h3);
-				append_dev(main, t9);
 				append_dev(main, t10);
+				append_dev(main, t11);
 			},
 			p: function update(ctx, [dirty]) {
 				if (dirty & /*name*/ 1) set_data_dev(t1, /*name*/ ctx[0]);
-				if (dirty & /*apimessage*/ 2) set_data_dev(t10, /*apimessage*/ ctx[1]);
+				if (dirty & /*apimessage*/ 2) set_data_dev(t11, /*apimessage*/ ctx[1]);
 			},
 			i: noop,
 			o: noop,
@@ -810,6 +837,7 @@ var app = (function () {
 		let { $$slots: slots = {}, $$scope } = $$props;
 		validate_slots('App', slots, []);
 		let { name } = $$props;
+		let src = "./background.png";
 		let apimessage = "Waiting for server...";
 
 		onMount(async () => {
@@ -834,10 +862,11 @@ var app = (function () {
 			if ('name' in $$props) $$invalidate(0, name = $$props.name);
 		};
 
-		$$self.$capture_state = () => ({ onMount, name, apimessage });
+		$$self.$capture_state = () => ({ onMount, name, src, apimessage });
 
 		$$self.$inject_state = $$props => {
 			if ('name' in $$props) $$invalidate(0, name = $$props.name);
+			if ('src' in $$props) src = $$props.src;
 			if ('apimessage' in $$props) $$invalidate(1, apimessage = $$props.apimessage);
 		};
 

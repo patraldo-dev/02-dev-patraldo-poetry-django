@@ -2,6 +2,8 @@
 	import { onMount } from "svelte";
 
 	export let name;
+        let src = "./background.png";
+
 
 	let apimessage = "Waiting for server...";
 
@@ -13,17 +15,26 @@
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
+	<h1>¡Hola {name}!</h1>
 	<p>
-		Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn
-		how to build Svelte apps.
+		Visit the <a href="https://dev.to/besil/my-django-svelte-setup-for-fullstack-development-3an8">Django-Svelte setup for fullstack development</a> to learn
+		how to build Django-Svelte apps.
 	</p>
+<img src="/static/frontend/images/background.png" alt="Background image">
+
+
+
 
 	<h3>Data from server</h3>
 	{apimessage}
 </main>
 
 <style>
+        body {
+                background-position: center;
+        }
+
+
 	main {
 		text-align: center;
 		padding: 1em;
